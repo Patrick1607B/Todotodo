@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('style.css') }}">
+
+		{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+
+
+	</head>
+	<body>
+		<header>
+			{# <img src="./assets/img/logo/logo.àng.png" alt="Logo Todo Todo"> #}
+			<h1>Todo Todo</h1>
+		</header>
+		<div id="content"> {% block body %}{% endblock %}
+			{% block Lien %}
+			</div>
+			<p>
+				<a href="{{ path('app_register') }}">Enregistrement</a>
+				<a href="{{ path('app_login') }}">Connexion</a>
+				<a href="{{ path('app_tasks_index') }}">Les taches</a>
+				<a href="{{ path('app_todo_lists_index') }}">Todolist</a>
+				<a href="{{ path('app_user_index') }}">Utilisateur</a>
+			</p>
+		{% endblock %}
+	</body>
+</html>

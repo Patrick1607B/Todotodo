@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TodoLists{% endblock %}
+
+{% block body %}
+    <h1>Create new TodoLists</h1>
+
+    {{ include('todo_lists/_form.html.twig') }}
+
+    <a href="{{ path('app_todo_lists_index') }}">back to list</a>
+{% endblock %}
