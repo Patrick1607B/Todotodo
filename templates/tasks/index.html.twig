@@ -17,24 +17,28 @@
 			</tr>
 		</thead>
 		<tbody>
+			{# {{id}} #}
 			{% for task in tasks %}
-				<tr>
-					<td>{{ task.id }}</td>
-					<td>{{ task.content }}</td>
-					<td>{{ task.deadLine ? task.deadLine|date('Y-m-d') : '' }}</td>
-					<td>{{ task.etat }}</td>
-					<td>
-						<a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a>
-						<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
-					</td>
-				</tr>
+
+				{% if task.tasksTodolists.id == id %}
+					<tr>
+						<td>{{ task.id }}</td>
+						<td>{{ task.content }}</td>
+						<td>{{ task.deadLine ? task.deadLine|date('Y-m-d') : '' }}</td>
+						<td>{{ task.etat }}</td>
+						<td>
+							<a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a>
+							<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% endif %}
 			{% else %}
 				<tr>
 					<td colspan="5">no records found</td>
 				</tr>
 			{% endfor %}
 		</tbody>
-	</table>
+	</tbody>
+</table>
 
-	<a href="{{ path('app_tasks_new') }}">Create new</a>
-{% endblock %}
+<a href="{{ path('app_tasks_new', {'id': id}) }}">Create new</a>{% endblock %}

@@ -11,34 +11,36 @@
 
 		{% endblock %}
 
-		{% block javascripts %}{% endblock %}
+
 		{% block awesome %}<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 		{% endblock %}
 
 	</head>
-	<header>
-		{# <img src="./assets/img/logo/logo.àng.png" alt="Logo Todo Todo"> #}
-		<h1 class="animate-charcter">Todo Todo</h1>
-	</header>
-	<div id="contentCloud">
-		<i id="cloud1" class="fa fa-cloud" aria-hidden="true"></i>
-		<i id="cloud2" class="fa fa-cloud" aria-hidden="true"></i>
-		<i id="cloud3" class="fa fa-cloud" aria-hidden="true"></i>
-		<i id="cloud4" class="fa fa-cloud" aria-hidden="true"></i>
-		<i id="cloud5" class="fa fa-cloud" aria-hidden="true"></i>
-		<i id="cloud6" class="fa fa-cloud" aria-hidden="true"></i>
-	</div>
 	<body>
+		<header>
+			{# <img src="../assets/logo/logo.àng.png" alt="Logo Todo Todo"> #}
+			<h1 class="animate-charcter">Todo Todo</h1>
+		</header>
+		<div id="contentCloud">
+			<i id="cloud1" class="fa fa-cloud" aria-hidden="true"></i>
+			<i id="cloud2" class="fa fa-cloud gris" aria-hidden="true"></i>
+			<i id="cloud3" class="fa fa-cloud" aria-hidden="true"></i>
+			<i id="cloud4" class="fa fa-cloud gris" aria-hidden="true"></i>
+			<i id="cloud5" class="fa fa-cloud gris" aria-hidden="true"></i>
+			<i id="cloud6" class="fa fa-cloud gris" aria-hidden="true"></i>
+		</div>
 		<div id="content"> {% block body %}{% endblock %}
+			{# <a href="{{ path('app_register') }}">Enregistrement</a> #}
 			{% block Lien %}
 			</div>
 			<p>
 				<a href="{{ path('app_register') }}">Enregistrement</a>
 				<a href="{{ path('app_login') }}">Connexion</a>
-				<a href="{{ path('app_tasks_index') }}">Les taches</a>
+				{# <a href="{{ path('app_tasks_index') }}">Les taches</a> #}
 				<a href="{{ path('app_todo_lists_index') }}">Todolist</a>
 				<a href="{{ path('app_user_index') }}">Utilisateur</a>
 			</p>
 		{% endblock %}
+		<script src="../script.js"></script>
 	</body>
 </html>
