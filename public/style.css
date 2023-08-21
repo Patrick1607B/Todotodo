@@ -11,20 +11,187 @@
 }
 
 html {
-    height: 100%;
+    position: relative;
     width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #182089, #327DEA, #8ab9c6, #B9E9FC);
+    border-bottom: solid 1px #999;
+    box-shadow: #bababa 0px 0px 5px;
+    font-weight: 900;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 20%;
+    z-index: 10;
 }
 
 body {
-    background-color: var(--colorBlueLight);
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
     flex-direction: column;
 }
 
+
+
+/* anime titre h1 */
+.animate-charcter {
+    text-transform: uppercase;
+    background-image: linear-gradient(-225deg,
+            #327DEA 0%,
+            #b9e9fc 29%,
+            #8ab9c6 67%,
+            #327DEA 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 10s linear infinite;
+    display: inline-block;
+    font-size: 5rem;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* fin anime titre */
+/* animation ciel nuageux  => Paris :-) */
+#cloud1 {
+    z-index: 1;
+    position: absolute;
+    left: 0px;
+    top: 1.5em;
+    font-size: 5.5em;
+    color: #82d4e2;
+    animation: moveCloud 70s linear infinite;
+    -webkit-animation: moveCloud 60s linear infinite;
+    -moz-animation: moveCloud 60s linear infinite;
+}
+
+#cloud2 {
+    z-index: 2;
+    position: absolute;
+    left: -20px;
+    top: 2em;
+    font-size: 6em;
+    font-weight: 900;
+    color: #666;
+    animation-delay: 7s;
+    -webkit-animation-delay: 3s;
+    -moz-animation-delay: 7s;
+    animation: moveCloud 80s ease-in-out infinite;
+    -webkit-animation: moveCloud 50s ease-in-out infinite;
+    -moz-animation: moveCloud 50s ease-in-out infinite;
+}
+
+#cloud3 {
+    z-index: 1;
+    position: absolute;
+    left: -50px;
+    bottom: .5em;
+    font-size: 6em;
+    color: #a8e4ec;
+    animation: moveCloud 75s ease-out infinite;
+    -webkit-animation: moveCloud 55s ease-out infinite;
+    -moz-animation: moveCloud 55s ease-out infinite;
+}
+
+#cloud4 {
+    z-index: 2;
+    position: absolute;
+    left: -10px;
+    top: 3em;
+    font-size: 6.5em;
+    font-weight: 900;
+    color: #999;
+    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation: moveCloud 65s ease-in-out infinite;
+    -webkit-animation: moveCloud 50s ease-in-out infinite;
+    -moz-animation: moveCloud 50s ease-in-out infinite;
+}
+
+#cloud5 {
+    z-index: 2;
+    position: absolute;
+    left: -60px;
+    top: 2.8em;
+    font-size: 6.5em;
+    font-weight: 900;
+    color: #bababa;
+    animation: moveCloud 70s ease-out infinite;
+    -webkit-animation: moveCloud 70s ease-out infinite;
+    -moz-animation: moveCloud 70s ease-out infinite;
+}
+
+#cloud6 {
+    z-index: 2;
+    position: absolute;
+    left: -40px;
+    top: 0.5em;
+    font-size: 7em;
+    font-weight: 900;
+    color: #cacaca;
+    animation-delay: 4s;
+    -webkit-animation-delay: 4s;
+    -moz-animation-delay: 4s;
+    animation: moveCloud 85s ease-in infinite;
+    -webkit-animation: moveCloud 55s ease-in infinite;
+    -moz-animation: moveCloud 55s ease-in infinite;
+}
+
+@keyframes moveCloud {
+    0% {
+        transform: translate(1950px);
+    }
+
+    100% {
+        transform: translate(-50px);
+    }
+}
+
+@-webkit-keyframes moveCloud {
+    0% {
+        transform: translate(1950px);
+    }
+
+    100% {
+        transform: translate(-50px);
+    }
+}
+
+@-moz-keyframes moveCloud {
+    0% {
+        transform: translate(1950px);
+    }
+
+    100% {
+        transform: translate(-50px);
+    }
+}
+
+
 #content {
     padding: 10%;
+    z-index: 10;
 }
+
+/* fin anime nuage */
