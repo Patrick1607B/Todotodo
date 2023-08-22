@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Tasks;
 use App\Form\TasksType;
+use App\Repository\StatusRepository;
 use App\Repository\TasksRepository;
 use App\Repository\TodoListsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,10 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class TasksController extends AbstractController
 {
     #[Route('/{id}', name: 'app_tasks_index', methods: ['GET'])]
-    public function index(TasksRepository $tasksRepository, $id): Response
+    public function index(TasksRepository $tasksRepository, StatusRepository $statusRepository, $id): Response
     {
         return $this->render('tasks/index.html.twig', [
             'tasks' => $tasksRepository->findAll(),
+            'status' => $statusRepository->findAll(),
             'id' => $id
         ]);
     }
@@ -57,13 +59,15 @@ class TasksController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_tasks_show', methods: ['GET'])]
-    public function show(Tasks $task): Response
-    {
-        return $this->render('tasks/show.html.twig', [
-            'task' => $task,
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_tasks_show', methods: ['GET'])]
+    // public function show(Tasks $task, StatusRepository $statusRepository): Response
+    // {
+    //     dd($statusRepository->findAll());
+    //     return $this->render('tasks/show.html.twig', [
+    //         'task' => $task,
+    //         'status' => $statusRepository->findAll()
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_tasks_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tasks $task, EntityManagerInterface $entityManager, $id): Response
@@ -97,5 +101,20 @@ class TasksController extends AbstractController
         return $this->redirectToRoute('app_tasks_index', [
             'id' => $id_todo
         ], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/statusTask/{task_id}/{etat_id}', name: 'app_tasks_edit_state', methods: ['GET'])]
+    public function editState(Request $request, EntityManagerInterface $entityManager, $task_id, $etat_id, TasksRepository $tasksRepository, StatusRepository $statusRepository): Response
+    {
+        $task = $tasksRepository->findOneBy(['id' => $task_id]);
+        $state = $statusRepository->findOneBy(['id' => $etat_id]);
+        // dd($state);
+        $task->setStatus($state);
+        $entityManager->flush();
+        // dd($task);
+        return $this->redirectToRoute('app_tasks_index', [
+            'id' => $task->getTasksTodolists()->getId()
+        ], Response::HTTP_SEE_OTHER);
+        // dd($task);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\TasksRepository;
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Status;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TasksRepository;
 
 #[ORM\Entity(repositoryClass: TasksRepository::class)]
 class Tasks
@@ -22,12 +22,15 @@ class Tasks
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $deadLine = null;
 
-
-    #[ORM\Column(length: 50)]
-    private ?string $etat = null;
+    // #[ORM\Column(length: 50)]
+    // private ?string $etat = null;
 
     #[ORM\ManyToOne]
     private ?TodoLists $tasksTodolists = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Status $status = null;
 
     public function getId(): ?int
     {
@@ -58,17 +61,17 @@ class Tasks
         return $this;
     }
 
-    public function getEtat(): ?string
-    {
-        return $this->etat;
-    }
+    // public function getEtat(): ?string
+    // {
+    //     return $this->etat;
+    // }
 
-    public function setEtat(string $etat): static
-    {
-        $this->etat = $etat;
+    // public function setEtat(string $etat): static
+    // {
+    //     $this->etat = $etat;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getTasksTodolists(): ?TodoLists
     {
@@ -78,6 +81,18 @@ class Tasks
     public function setTasksTodolists(?TodoLists $tasksTodolists): static
     {
         $this->tasksTodolists = $tasksTodolists;
+
+        return $this;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

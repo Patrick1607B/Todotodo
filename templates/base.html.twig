@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<header>
-			{# <img src="../assets/logo/logo.àng.png" alt="Logo Todo Todo"> #}
+			{# <img src="../asset/logo/logo.àng.png" alt="Logo Todo Todo"> #}
 			<h1 class="animate-charcter">Todo Todo</h1>
 		</header>
 		<div id="contentCloud">
@@ -41,6 +41,8 @@
 				<a href="{{ path('app_user_index') }}">Utilisateur</a>
 			</p>
 		{% endblock %}
-		<script src="../script.js"></script>
+
+		<script src="{{ asset('script.js') }}"></script>
+
 	</body>
 </html>

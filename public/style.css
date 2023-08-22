@@ -47,7 +47,7 @@ img {
 }
 
 body>header>h1 {
-    z-index: 99;
+    z-index: 10;
 }
 
 /* anime titre h1 */
@@ -109,7 +109,7 @@ body>header>h1 {
 }
 
 #cloud3 {
-    z-index: 1;
+    z-index: 3;
     position: absolute;
     left: -50px;
     top: 3em;
@@ -121,7 +121,7 @@ body>header>h1 {
 }
 
 #cloud4 {
-    z-index: 2;
+    z-index: 4;
     position: absolute;
     left: -10px;
     top: 4em;
@@ -137,7 +137,7 @@ body>header>h1 {
 }
 
 #cloud5 {
-    z-index: 2;
+    z-index: 5;
     position: absolute;
     left: -60px;
     top: 2.5em;
@@ -150,14 +150,14 @@ body>header>h1 {
 }
 
 #cloud6 {
-    z-index: 2;
+    z-index: 6;
     position: absolute;
     left: -40px;
     top: 6em;
     font-size: 7em;
     font-weight: 900;
     color: #cacaca;
-    animation-delay: 4s;
+    animation-delay: 2s;
     -webkit-animation-delay: 4s;
     -moz-animation-delay: 4s;
     animation: moveCloud 85s ease-in infinite;
