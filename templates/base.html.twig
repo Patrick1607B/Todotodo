@@ -21,6 +21,13 @@
 			{# <img src="../asset/logo/logo.àng.png" alt="Logo Todo Todo"> #}
 			<h1 class="animate-charcter">Todo Todo</h1>
 		</header>
+		{% if app.user %}
+			<div class="mb-3">
+				You are logged in as
+				{{ app.user.userIdentifier }},
+				<a href="{{ path('app_logout') }}">Logout</a>
+			</div>
+		{% endif %}
 		<div id="contentCloud">
 			<i id="cloud1" class="fa fa-cloud" aria-hidden="true"></i>
 			<i id="cloud2" class="fa fa-cloud gris" aria-hidden="true"></i>
@@ -33,13 +40,15 @@
 			{# <a href="{{ path('app_register') }}">Enregistrement</a> #}
 			{% block Lien %}
 			</div>
-			<p>
-				<a href="{{ path('app_register') }}">Enregistrement</a>
-				<a href="{{ path('app_login') }}">Connexion</a>
-				{# <a href="{{ path('app_tasks_index') }}">Les taches</a> #}
-				<a href="{{ path('app_todo_lists_index') }}">Todolist</a>
-				<a href="{{ path('app_user_index') }}">Utilisateur</a>
-			</p>
+			{% if is_granted('ROLE_ADMIN') %}
+				<p>
+					<a href="{{ path('app_register') }}">Enregistrement</a>
+					<a href="{{ path('app_login') }}">Connexion</a>
+					{# <a href="{{ path('app_tasks_index') }}">Les taches</a> #}
+					<a href="{{ path('app_todo_lists_index') }}">Todolist</a>
+					<a href="{{ path('app_user_index') }}">Utilisateur</a>
+				</p>
+			{% endif %}
 		{% endblock %}
 
 		<script src="{{ asset('script.js') }}"></script>
