@@ -4,7 +4,7 @@ console.log(cloud);
 
 cloud.forEach((item) => {
   item.addEventListener("click", () => {
-    console.log("true");
+    // console.log("true");
     item.remove();
   });
 });

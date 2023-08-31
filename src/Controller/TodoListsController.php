@@ -17,8 +17,13 @@ class TodoListsController extends AbstractController
     #[Route('/', name: 'app_todo_lists_index', methods: ['GET'])]
     public function index(TodoListsRepository $todoListsRepository): Response
     {
+        $user = $this->getUser();
+
+        $todoLists = $todoListsRepository->findBy(["owner" => $user]);
+
+        // dd($todoLists);
         return $this->render('todo_lists/index.html.twig', [
-            'todo_lists' => $todoListsRepository->findAll(),
+            'todo_lists' => $todoLists,
         ]);
     }
 

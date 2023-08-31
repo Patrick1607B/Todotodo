@@ -22,40 +22,39 @@
 			{# {{id}} #}
 			{% for task in tasks %}
 
-				{% if task.tasksTodolists.id == id %}
-					<tr>
-						{# <td>{{ task.id }}</td> #}
-						<td>{{ task.content }}</td>
 
-						<td>
-							<select name="statusTask" id="task-status">
-								<option value="{{task.id}}" disabled></option>
-								{% for etat in status %}
-									{% if(task.status == etat) %}
-										<option value={{etat.id}} selected="selected">{{etat.status}}</option>
-									{% else %}
-										<option value={{etat.id}}>{{etat.status}}</option>
-									{% endif %}
-								{% endfor %}
-							</select>
-						</td>
-						<td>{{ task.deadLine ? task.deadLine|date('Y-m-d') : '' }}</td>
-						<td>
-							<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
-						</td>
-						{# <td>{{ task.etat }}</td> #}
-						{# <td><a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a></td> #}
-					</tr>
-				</td>
+				<tr>
+					{# <td>{{ task.id }}</td> #}
+					<td>{{ task.content }}</td>
 
-			</tr>
-		{% endif %}
-	{% else %}
-		<tr>
-			<td colspan="5">no records found</td>
-		</tr>
-	{% endfor %}
-</tbody></tbody></table><a href="{{ path('app_tasks_new', {'id': id}) }}">Create new</a><script>console.log('selects');
+					<td>
+						<select name="statusTask" id="task-status">
+							<option value="{{task.id}}" disabled></option>
+							{% for etat in status %}
+								{% if(task.status == etat) %}
+									<option value={{etat.id}} selected="selected">{{etat.status}}</option>
+								{% else %}
+									<option value={{etat.id}}>{{etat.status}}</option>
+								{% endif %}
+							{% endfor %}
+						</select>
+					</td>
+					<td>{{ task.deadLine ? task.deadLine|date('Y-m-d') : '' }}</td>
+					<td>
+						<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
+					</td>
+					{# <td>{{ task.etat }}</td> #}
+					{# <td><a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a></td> #}
+				</tr>
+			</td>
+		</tbody>
+	</tr>
+
+{% else %}
+	<tr>
+		<td colspan="5">no records found</td>
+	</tr>
+{% endfor %}</tbody></tbody></table><a href="{{ path('app_tasks_new', {'id': id}) }}">Create new</a><script>console.log('selects');
 const selects = document.querySelectorAll('#task-status');
 
 selects.forEach((item) => {

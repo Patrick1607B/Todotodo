@@ -12,7 +12,26 @@
 
 html {
     height: 100%;
-    width: 100%;
+}
+
+.text {
+    width: 60%;
+    text-align: center;
+    margin-bottom: 15%;
+    font-size: 3.8em;
+}
+
+h2 {
+    font-size: 6em;
+    font-family: futura;
+}
+
+p {
+    font-family: Futura;
+}
+
+#content>form>p>a {
+    font-size: 1.5em;
 }
 
 body {
@@ -34,20 +53,97 @@ body {
 }
 
 header {
-    width: 100%;
+    height: 10%;
     display: flex;
     align-items: center;
+}
+
+main {
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--colorBlueLight);
     justify-content: center;
 }
 
-img {
-    width: 80px;
-    height: 80px;
-    margin-right: 2%;
+
+#content {
+    padding: 5%;
+    background-color: rgba(185, 233, 252, 0.4);
+    border-radius: 20px;
+    margin-bottom: 50%;
 }
 
-body>header>h1 {
-    z-index: 10;
+#content>form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    height: auto;
+    width: auto;
+}
+
+input {
+    height: 70px;
+    width: 70%;
+    margin: 5%;
+    color: black;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+
+
+/* CSS */
+.btn {
+    align-items: center;
+    background-image: linear-gradient(144deg, #327DEA, #8ab9c6 50%, #327DEA);
+    border: 0;
+    border-radius: 20px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: futura, Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 25px 50px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 3.5em;
+}
+
+#content>form>p {
+    font-size: xx-large;
+    padding: 3%;
+    color: white;
+}
+
+.button-63:active,
+.button-63:hover {
+    outline: 0;
+}
+
+#content>form>p>a {
+    color: var(--colorBlueDarkBlue);
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .button-63 {
+        font-size: 24px;
+        min-width: 196px;
+    }
 }
 
 /* anime titre h1 */
@@ -78,14 +174,21 @@ body>header>h1 {
     }
 }
 
+
+
 /* fin anime titre */
-/* animation ciel nuageux  => Paris :-) */
+
+/* animation ciel nuageux*/
+#contentCloud {
+    display: none;
+}
+
 #cloud1 {
     z-index: 1;
     position: absolute;
     left: 0px;
     top: 1em;
-    font-size: 5.5em;
+    font-size: 5.5rem;
     color: #82d4e2;
     animation: moveCloud 70s linear infinite;
     -webkit-animation: moveCloud 60s linear infinite;
@@ -97,7 +200,7 @@ body>header>h1 {
     position: absolute;
     left: -20px;
     top: 6em;
-    font-size: 6em;
+    font-size: 6rem;
     font-weight: 900;
     color: #666;
     animation-delay: 7s;
@@ -113,7 +216,7 @@ body>header>h1 {
     position: absolute;
     left: -50px;
     top: 3em;
-    font-size: 6em;
+    font-size: 6rem;
     color: #a8e4ec;
     animation: moveCloud 75s ease-out infinite;
     -webkit-animation: moveCloud 55s ease-out infinite;
@@ -125,7 +228,7 @@ body>header>h1 {
     position: absolute;
     left: -10px;
     top: 4em;
-    font-size: 6.5em;
+    font-size: 6.5rem;
     font-weight: 900;
     color: #999;
     animation-delay: 1s;
@@ -141,7 +244,7 @@ body>header>h1 {
     position: absolute;
     left: -60px;
     top: 2.5em;
-    font-size: 6.5em;
+    font-size: 6.5rem;
     font-weight: 900;
     color: #bababa;
     animation: moveCloud 70s ease-out infinite;
@@ -154,7 +257,7 @@ body>header>h1 {
     position: absolute;
     left: -40px;
     top: 6em;
-    font-size: 7em;
+    font-size: 7rem;
     font-weight: 900;
     color: #cacaca;
     animation-delay: 2s;
@@ -195,18 +298,11 @@ body>header>h1 {
     }
 }
 
+/* fin animation ciel nuageux */
 
-#content {
-    background-color: rgba(255, 255, 255, 0.40);
-    border-radius: 20px;
-    padding: 3%;
-    z-index: 10;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+@media screen and (min-width: 768px) {
+
+    #contentCloud {
+        display: block;
+    }
 }
-
-/* fin anime nuage */
