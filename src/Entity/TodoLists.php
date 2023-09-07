@@ -17,8 +17,8 @@ class TodoLists
     #[ORM\Column(length: 60)]
     private ?string $nameList = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $deadLine = null;
+    #[ORM\Column(type: "date", nullable: true)]
+    private ?\DateTime $deadLine = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -41,12 +41,12 @@ class TodoLists
         return $this;
     }
 
-    public function getDeadLine(): ?\DateTimeImmutable
+    public function getDeadLine(): ?\DateTime
     {
         return $this->deadLine;
     }
 
-    public function setDeadLine(?\DateTimeImmutable $deadLine): static
+    public function setDeadLine(?\DateTime $deadLine): static
     {
         $this->deadLine = $deadLine;
 

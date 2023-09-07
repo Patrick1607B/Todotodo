@@ -19,7 +19,7 @@ class TasksType extends AbstractType
                 'class' => Status::class,
                 'choice_label' => 'status'
             ])
-            // ->add('deadLine')
+            ->add('deadLine')
             // ->add('etat')
             // ->add('tasksTodolists')
         ;

@@ -19,8 +19,8 @@ class Tasks
 
     // #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     // private ?\DateTimeInterface $deadLine = null;
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $deadLine = null;
+    #[ORM\Column(type: "date", nullable: true)]
+    private ?\DateTime $deadLine = null;
 
     // #[ORM\Column(length: 50)]
     // private ?string $etat = null;
@@ -49,12 +49,12 @@ class Tasks
         return $this;
     }
 
-    public function getDeadLine(): ?\DateTimeImmutable
+    public function getDeadLine(): ?\DateTime
     {
         return $this->deadLine;
     }
 
-    public function setDeadLine(?\DateTimeImmutable $deadLine): static
+    public function setDeadLine(?\DateTime $deadLine): static
     {
         $this->deadLine = $deadLine;
 
