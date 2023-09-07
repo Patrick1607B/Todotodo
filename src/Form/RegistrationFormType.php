@@ -37,7 +37,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Please enter an email address.',
                     ]),
                     new Regex([
-                        'pattern' => '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/',
+                        'pattern' => '/^([a-zA-Z0-9-._\-0-9]*)([@]{1})([aA-zZ.]*)([.])([aA-zZ.]{2,4})$/',
                         'message' => 'The email "{{ value }}" is not a valid email address.',
                     ]),
                 ],
