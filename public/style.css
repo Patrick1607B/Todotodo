@@ -15,6 +15,19 @@ html {
     width: 100%;
 }
 
+h1 {
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    font-family: Segoe UI;
+}
+
+
 
 body {
     z-index: 0;
@@ -49,30 +62,45 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    color: var(--colorBlueLight);
     justify-content: center;
 }
 
 footer {
     height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0% 2%;
+    align-items: flex-end;
 }
 
 .text {
-    text-align: center;
-    font-size: 1em;
+    z-index: 10;
+    text-align: justify;
+    font-size: 1.2em;
+    width: 20%;
+    height: 20%;
+    font-weight: bold;
+    color: var(--colorBlueLight);
 }
 
 #content {
     z-index: 10;
     padding: 3%;
-    background-color: rgba(185, 233, 252, 0.4);
-    border-radius: 20px;
+    height: 40%;
+    width: 25%;
 }
 
 #content>form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+}
+
+.h3 {
+    font-size: 2em;
 }
 
 form {
@@ -82,14 +110,19 @@ form {
 
 input {
     height: 30px;
-    width: 90%;
+    width: 100%;
     margin: 5%;
-    color: black;
-    font-size: 1em;
+    color: var(--colorBlueDarkBlue);
+    font-size: 1.1em;
     cursor: auto;
 }
 
-/* CSS */
+#content>form>p>a {
+    text-decoration: none;
+}
+
+
+/* CSS btn*/
 .btn {
     align-items: center;
     background-image: linear-gradient(144deg, #327DEA, #8ab9c6 50%, #327DEA);
@@ -111,17 +144,12 @@ input {
     white-space: nowrap;
     cursor: pointer;
     font-size: 1.5em;
+    margin-bottom: 3%;
 }
-
 
 .button-63:active,
 .button-63:hover {
     outline: 0;
-}
-
-#content>form>p>a {
-    color: var(--colorBlueDarkBlue);
-    text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -130,6 +158,9 @@ input {
         min-width: 196px;
     }
 }
+
+/* fin css btn */
+
 
 /* anime titre h1 */
 .animate-charcter {
@@ -159,8 +190,6 @@ input {
         background-position: 200% center;
     }
 }
-
-
 
 /* fin anime titre */
 
@@ -290,9 +319,9 @@ input {
 
 /* fin animation ciel nuageux */
 
-@media screen and (min-width: 768px) {
+/* @media screen and (max-width: 768px) {
 
     #contentCloud {
         display: block;
     }
-}
+} */

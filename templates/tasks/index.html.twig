@@ -15,6 +15,7 @@
 			<th>Content</th>
 			<th>Etat</th>
 			<th>DeadLine</th>
+			<th>Fini?</th>
 			<th>actions</th>
 		</tr>
 	</thead>
@@ -39,7 +40,16 @@
 						{% endfor %}
 					</select>
 				</td>
-				<td>{{ task.deadLine ? task.deadLine|date('Y-m-d') : '' }}</td>
+				<td>{{ task.deadLine ? task.deadLine|date('d-m-Y') : '' }}</td>
+				<td>
+					{% if date(task.deadLine) < date() and task.status.status != 'c' %}
+						oui
+					{% else %}
+						non
+					{% endif %}
+
+
+				</td>
 				<td>
 					<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
 				</td>
@@ -47,25 +57,45 @@
 				{# <td><a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a></td> #}
 			</tr>
 		</td>
+	{% else %}
+		<tr>
+			<td colspan="5">no records found</td>
+		</tr>
+	{% endfor %}
 	</tbody>
-</tr>{% else %}
-<tr>
-	<td colspan="5">no records found</td>
-</tr>{% endfor %}</tbody></table><a href="{{ path('app_tasks_new', {'id': id}) }}">Create new</a><a href="{{ path('app_todo_lists_index') }}">Todolist</a><script>console.log('selects');
-			<a href="{{ path('app_todo_lists_index') }}">Todolist</a>
-			const selects = document.querySelectorAll('#task-status');
-			
-			selects.forEach((item) => {
-			console.log(item);
-			item.addEventListener('change', (e) => {
-			
+</table>
+
+<a href="{{ path('app_tasks_new', {'id': id}) }}">Create new</a>
+<a href="{{ path('app_todo_lists_index') }}">Todolist</a>
+
+
+<p>
+
+{% for task in tasks %}
+	{% if date(task.deadLine) < date() and task.status.status != 'c' %}
+		{{task.content}}
+		{{task.status.status}}
+	{% else %}
+		
+	{% endif %}
+{% endfor %}
+
+</p>
+
+
+
+<script>
+	const selects = document.querySelectorAll('#task-status');
+console.log('selects');
+
+	selects.forEach((item) => {
+		console.log(item);
+		item.addEventListener('change', (e) => {	
 			const taskId = e.target[0].value;
 			const etatId = e.target.value;
-			
-			window.location.href = `/tasks/statusTask/${
-			taskId
-			}/${
-			etatId
-			}/`;
-			})
-			})</script>{% endblock %}
+
+			window.location.href = `/tasks/statusTask/${taskId}/${etatId}/`;
+		})
+	})
+</script>
+{% endblock %}

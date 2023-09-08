@@ -113,7 +113,7 @@ class TasksController extends AbstractController
         $task->setStatus($state);
         $entityManager->flush();
         // dd($task);
-        dd($task->getTasksTodolists()->getId());
+        // dd($task->getTasksTodolists()->getId());
         return $this->redirectToRoute('app_tasks_index', [
             'id' => $task->getTasksTodolists()->getId()
         ], Response::HTTP_SEE_OTHER);
