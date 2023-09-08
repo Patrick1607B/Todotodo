@@ -19,11 +19,15 @@ class TasksController extends AbstractController
     #[Route('/{id}', name: 'app_tasks_index', methods: ['GET'])]
     public function index(TasksRepository $tasksRepository, StatusRepository $statusRepository, $id): Response
     {
+        $messageTaskNotEnd = ["Rien ne sert de courir car cela fatigue", "Ne fait jamais le jour même ce que tu porrais faire le lendemain"];
+        $messageTaskNotEndRandom = rand(0,count($messageTaskNotEnd)-1);
+
         $tasks = $tasksRepository->findBy(['tasksTodolists' => $id]);
         return $this->render('tasks/index.html.twig', [
             'tasks' => $tasks,
             'status' => $statusRepository->findAll(),
-            'id' => $id
+            'id' => $id,
+            'message' => $messageTaskNotEnd[$messageTaskNotEndRandom]
         ]);
     }
 
