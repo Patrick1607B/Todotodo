@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block body %}
-	<h1>S'inscrire</h1>
+	
 
 	{{ form_errors(registrationForm) }}
-
 	{{ form_start(registrationForm) }}
+	<h2>S'inscrire</h2>
 	{{ form_row(registrationForm.email) }}
 	{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
@@ -16,7 +16,7 @@
 	{{ form_row(registrationForm.agreeTerms) }}
 
 	<button type="submit" class="btn">Register</button>
+<a href="{{ path('app_login') }}">Retour Connexion</a>
 	{{ form_end(registrationForm) }}
 
-<a href="{{ path('app_login') }}">Retour Connexion</a>
 {% endblock %}

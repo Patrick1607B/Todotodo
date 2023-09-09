@@ -22,12 +22,15 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter an email address.',
+                        'message' => 'Merci de renseigner votre email.',
                     ]),
                     new Regex([
                         'pattern' => '/^([a-zA-Z0-9-._\-0-9]*)([@]{1})([aA-zZ.]*)([.])([aA-zZ.]{2,4})$/',
-                        'message' => 'The email "{{ value }}" is not a valid email address.',
+                        'message' => 'Cette email "{{ value }}" est pas valid.',
                     ]),
+                ],
+                'attr' => [
+                    'placeholder' => 'Votre Email',
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
@@ -44,13 +47,21 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe doivent être identique',
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmation mot de passe'],
+                'attr' => [
+                    'autocomplete' => 'new-password'],
+                'first_options'  => 
+                    ['label' => 'Mot de passe',
+                    'attr' => ['placeholder' => 'Entrez votre mot de passe.'
+                ],
+                ],
+                'second_options' => 
+                    ['label' => 'Confirmation mot de passe',
+                    'attr' => ['placeholder' => 'Confirmez mot de passe.'],
+                ],
                 'constraints' => [
                     new Regex(
-                        '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                        "Il faut un mot de passe avec 14 caractères avec au moins 1 minuscule, 1 majuscule, 1chiffre et 1 caractère spécial."
+                        '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
+                        "Il faut un mot de passe avec 8 caractères avec au moins 1 minuscule, 1 majuscule, 1chiffre et 1 caractère spécial."
                     )
                 ],
             ]);

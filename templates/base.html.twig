@@ -22,14 +22,7 @@
 			<h1 class="animate-charcter">Todo Tout Doux</h1>
 		</header>
 		<main>
-			
-			{% if app.user %}
-				<div class="mb-3">
-					You are logged in as
-					{{ app.user.userIdentifier }},
-					<a href="{{ path('app_logout') }}">Logout</a>
-				</div>
-			{% endif %}
+			<!--conteneur des nuages-->
 			<div id="contentCloud">
 				<i id="cloud1" class="fa fa-cloud" aria-hidden="true"></i>
 				<i id="cloud2" class="fa fa-cloud gris" aria-hidden="true"></i>
@@ -38,8 +31,7 @@
 				<i id="cloud5" class="fa fa-cloud gris" aria-hidden="true"></i>
 				<i id="cloud6" class="fa fa-cloud gris" aria-hidden="true"></i>
 			</div>
-			<div id="content"> {% block body %}{% endblock %}
-				{# <a href="{{ path('app_register') }}">Enregistrement</a> #}
+			 {% block body %}{% endblock %}
 				{% block Lien %}
 					{% if is_granted('ROLE_ADMIN') %}
 						<p>
@@ -50,16 +42,19 @@
 							<a href="{{ path('app_user_index') }}">Utilisateur</a>
 						</p>
 					{% endif %}
-				</div>
-			</main>
-		{% endblock %}
+			{% endblock %}
+		</main>
 		<footer>
-
-			<p>Si tu veux chasser les nuages vise les !</p>
-
-			<a href=''>Les mentions légales</a>
+			<p>Si tu veux chasser les nuages gris vise les !</p>
+			{% if app.user %}
+				<div class="mb-3">
+					Tu es connecté en tant que
+					{{ app.user.userIdentifier }}, si tu veux sortir c'est ici
+					<a href="{{ path('app_logout') }}"><img src="{{ asset('asset/img/porte-de-sortie.png') }}" 									alt="deconnexion"></a>
+				</div>
+			{% endif %}
 
 		</footer>
 		<script src="{{ asset('script.js') }}"></script>
 	</body>
-</html></body></html>
+</html>

@@ -19,15 +19,21 @@
 		</thead>
 		<tbody>
 			{% for todo_list in todo_lists %}
+				{% if date(todo_list.deadLine) < date()%}
+				<tr class="red">
+				{% else %}
 				<tr>
+				{% endif %}
 					{# <td>{{ todo_list.id }}</td> #}
 					<td>{{ todo_list.nameList }}</td>
 					<td>{{ todo_list.deadLine ? todo_list.deadLine|date('d-m-Y') : '' }}</td>
 					<td>
+					{% if todo_list.deadLine %}
 					{% if date(todo_list.deadLine) < date()%}
 						oui
 					{% else %}
 						non
+					{% endif %}
 					{% endif %}
 
 
@@ -53,13 +59,13 @@
 </table>
 <a href="{{ path('app_todo_lists_new') }}">Create new</a>
 
-	{% for todo_list in todo_lists %}
+	{# {% for todo_list in todo_lists %}
 		{% if date(todo_list.deadLine) < date()%}
 					{{todo_list.nameList}} la date est fini, t'ennuie pas avec supprime la si tu veux !
-				{% else %}
+				{% else %} #}
 				
-		{% endif %}
-	{% endfor %}
+		{# {% endif %} #}
+	{# {% endfor %} #}
 
 
 {% endblock %}

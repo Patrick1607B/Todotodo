@@ -15,7 +15,7 @@
 			<th>Content</th>
 			<th>Etat</th>
 			<th>DeadLine</th>
-			<th>Fini?</th>
+			<th>Expiré</th>
 			<th>actions</th>
 		</tr>
 	</thead>
@@ -42,7 +42,7 @@
 				</td>
 				<td>{{ task.deadLine ? task.deadLine|date('d-m-Y') : '' }}</td>
 				<td>
-					{% if date(task.deadLine) < date() and task.status.status != 'Fait' %}
+					{% if date(task.deadLine) < date() %}
 						oui
 					{% else %}
 						non
@@ -70,16 +70,13 @@
 
 
 <p>
-
-{% for task in tasks %}
-	{% if date(task.deadLine) < date() and task.status.status != 'Fait' %}
-		{{task.content}}
+{# {% for task in tasks %} #}
+	{# {% if date(task.deadLine) < date() and task.status.status != 'c' %} #}
+		{# {{task.content}} #}
 		{{message}}
-	{% else %}
-		
-	{% endif %}
-{% endfor %}
-
+	{# {% else %} #}
+	{# {% endif %} #}
+{# {% endfor %} #}
 </p>
 
 
