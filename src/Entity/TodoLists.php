@@ -14,7 +14,7 @@ class TodoLists
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 60)]
+    #[ORM\Column(length: 20)]
     private ?string $nameList = null;
 
     #[ORM\Column(type: "date", nullable: true)]
