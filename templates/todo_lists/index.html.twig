@@ -12,7 +12,7 @@
 				<tr>
 					{# <th>Id</th> #}
 					<th>Nom</th>
-					<th>Dead de fin</th>
+					<th>Date de fin</th>
 					<th>Expirée</th>
 					{# <th>Owner</th> #}
 					<th>Modifier</th>
@@ -23,55 +23,41 @@
 				{# Début boucle for qui contrôl boucle sur Todo #}
 				{% for todo_list in todo_lists %}
 					{# Début if qui contrôl les dates limites #}
-					{% if date(todo_list.deadLine) < date()%}
-						<tr class="red">
-					{% else %}
-						<tr>
-					{% endif %}
+						{% if date(todo_list.deadLine) < date()%}
+							{# <tr class="red"> #}
+						{% else %}
+							<tr>
+						{% endif %}
 					{# <td>{{ todo_list.id }}</td> #}
 					<td>{{ todo_list.nameList }}</td>
 					<td>{{ todo_list.deadLine ? todo_list.deadLine|date('d-m-Y') : '' }}</td>
-					<td>
-				{% if todo_list.deadLine %}
-				{% if date(todo_list.deadLine) < date()%}
-					oui
-				{% else %}
-					non
-				{% endif %}
-				{% endif %}
-
-
+					<td>{% if todo_list.deadLine %}
+							{% if date(todo_list.deadLine) < date()%}
+								oui
+							{% else %}
+								non
+							{% endif %}
+						{% endif %}
 					</td>
-					{# <td>{{ todo_list.owner.email }}</td> #}
+						{# <td>{{ todo_list.owner.email }}</td> #}
 					<td>
-						{# <a href="{{ path('app_todo_lists_show', {'id': todo_list.id}) }}">
-																			show</a> #}
-						<a href="{{ path('app_todo_lists_edit', {'id': todo_list.id}) }}"><img class="parametres" src="{{ asset('asset/img/parametres.png') }}"alt="parametres"></a>
-						
+							{# <a href="{{ path('app_todo_lists_show', {'id': todo_list.id}) }}">show</a> #}
+							<a href="{{ path('app_todo_lists_edit', {'id': todo_list.id}) }}"><img class="parametres" 								src="{{ asset('asset/img/parametres.png') }}"alt="parametres"></a>
 					</td>
 					<td>
-						<a href="{{ path('app_tasks_index', {'id': todo_list.id}) }}"><img class="parametres" src="{{ asset('asset/img/croix.png') }}"alt="taches +"></a>
+							<a href="{{ path('app_tasks_index', {'id': todo_list.id}) }}"><img class="parametres" 								src="{{ asset('asset/img/croix.png') }}"alt="taches +"></a>
 					</td>
-				</tr>
-			</td>
-			</tr>
-			{% else %}
-			<tr>
-			<td colspan="5">no records found</td>
-			</tr>
-			{% endfor %}
-		</tbody>
+					</td>
+					</tr>
+					</tr>
+						{% else %}
+					<tr>
+					<td colspan="5">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</table>
-	<a class="NewTaskAndTodoList" href="{{ path('app_todo_lists_new') }}"><img class="TodoPlus" src="{{ asset('asset/img/croix.png') }}"alt="taches +"> Crée une nouvelle liste</a>
+			<a class="NewTaskAndTodoList" href="{{ path('app_todo_lists_new') }}"><img class="TodoPlus" src="{{ 				asset('asset/img/nouvelle-croix-bleu.png') }}"alt="taches +"> Crée une nouvelle liste</a>
 	</div>
-
-	{# {% for todo_list in todo_lists %}
-		{% if date(todo_list.deadLine) < date()%}
-					{{todo_list.nameList}} la date est fini, t'ennuie pas avec supprime la si tu veux !
-				{% else %} #}
-				
-		{# {% endif %} #}
-	{# {% endfor %} #}
-
-</div>
+	</div>
 {% endblock %}

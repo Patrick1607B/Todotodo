@@ -1,7 +1,9 @@
+/*partie commune aux versions desktop et mobile*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 :root {
@@ -17,8 +19,11 @@ html {
 
 h1, h2 {
     font-family: Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--colorBlueDarkBlue);
 }
-
+.h3 {
+    font-size: 2em;
+}
 p, a {
     font-family: Segoe UI;
 }
@@ -39,7 +44,6 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
 }
-
 header {
     width: 100%;
     height: 10%;
@@ -48,7 +52,6 @@ header {
     align-items: center;
     padding-top: 3%;
 }
-
 main {
     height: 80%;
     width: 100%;
@@ -56,23 +59,6 @@ main {
     align-items: center;
     flex-direction: column;
     justify-content: space-around;
-}
-/*pour le formualire d'inscription*/
-main > form > div:nth-child(5) {
-    display: flex;
-    width: 60%;
-    height: 20%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-#mainTable{
-    height: 80%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
 }
 footer {
     height: 10%;
@@ -82,112 +68,11 @@ footer {
     justify-content: space-between;
     padding: 0% 2%;
     align-items: flex-end;
-}
-footer > p {
-    font-size: 1.5em;
-    color: var(--colorBlueDarkBlue);
-}
-footer > a {
-    font-size: 1.4em;
-    text-decoration: dashed;
-}
-footer > div {
-    font-size: 1.3vw;
     color: var(--colorBlueDarkBlue);
 }
 footer > div > a > img {
     height: 25px;
 }
-/* pages Acceuil */
-#infoSite {
-    z-index: 10;
-    text-align: justify;
-    font-size: 1.5em;
-    width: auto;
-    height: auto;
-    font-weight: bold;
-    color: var(--colorBlueLight);
-    background-color: rgba(185,233,252, 0.1);
-    border-radius: 20px;
-    margin: 0% 10% 0% 10%;
-    text-align: center;
-}
-
-.text {
-    z-index: 10;
-    text-align: justify;
-    font-size: 1.2em;
-    width: 20%;
-    height: 20%;
-    font-weight: bold;
-}
-#compteur {
-    z-index: 10;
-    text-align: justify;
-    font-size: 1.2em;
-    width: auto;
-    height: auto;
-    font-weight: bold;
-    color: var(--colorBlueDarkBlue);
-    background-color: rgba(185,233,252, 0.1);
-    border-radius: 20px;
-    margin: 0% 10% 0% 10%;
-}
-/*fi Acceuil*/
-form {
-    z-index: 10;
-    padding: 3%;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    height: auto;
-    justify-content: space-between;
-    text-align: center;
-    /* background-color: rgba(185,233,252, 0.1); */
-}
-
-#registration_form_agreeTerms {
-    height: 20  px;
-    width: 20px;
-    margin: 0;
-    padding: 0;
-    margin-left: 3%;
-}
-.h3 {
-    font-size: 2em;
-}
-
-input {
-    height: 30px;
-    width: auto;
-    max-width: 100%;
-    margin: 5%;
-    color: var(--colorBlueDarkBlue);
-    font-size: 1.1em;
-    cursor: auto;
-}
-
-form>p>a {
-    text-decoration: none;
-}
-/* pour les pages avec des tables */
-#contentTable {
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;  
-    width: auto;
-    min-width: 70%;
-    height: auto;
-    padding: 5%;
-}
-.table {
-    width: 90%;
-    margin: 3%;
-}
-
 /* CSS btn*/
 .btn {
     align-items: center;
@@ -219,14 +104,103 @@ form>p>a {
 }
 
 @media (min-width: 768px) {
-    .button-63 {
-        font-size: 24px;
-        min-width: 196px;
-    }
+    
 }
 
 /* fin css btn */
+/*fin partie commune au desktop et mobile*/
+/*partie commune a toutes les pages sauf connexion inscription mdp oublié*/
+#mainTable{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
 
+footer > p {
+    font-size: 1.5em;
+    color: var(--colorBlueDarkBlue);
+}
+
+/* pages Acceuil */
+#infoSite {
+    z-index: 10;
+    text-align: justify;
+    font-size: 1.5em;
+    width: auto;
+    height: auto;
+    font-weight: bold;
+    color: var(--colorBlueLight);
+    background-color: rgba(185,233,252, 0.1);
+    border-radius: 20px;
+    margin: 0% 10% 0% 10%;
+    text-align: center;
+}
+
+#compteur {
+    z-index: 10;
+    text-align: justify;
+    font-size: 1.2em;
+    width: auto;
+    height: auto;
+    font-weight: bold;
+    color: var(--colorBlueDarkBlue);
+    background-color: rgba(185,233,252, 0.1);
+    border-radius: 20px;
+    margin: 0% 10% 0% 10%;
+}
+/*fi Acceuil*/
+form {
+    z-index: 10;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    justify-content: space-between;
+    text-align: center; 
+}
+
+#registration_form_agreeTerms {
+    height: 20  px;
+    width: 20px;
+    margin: 0;
+    padding: 0;
+    margin-left: 3%;
+}
+
+input {
+    height: 30px;
+    width: auto;
+    max-width: 100%;
+    margin: 5%;
+    color: var(--colorBlueDarkBlue);
+    font-size: 1.1em;
+    cursor: auto;
+}
+
+
+/* pour les pages avec des tables */
+#contentTable {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    width: auto;
+    min-width: 70%;
+    height: auto;
+    padding: 5%;
+}
+#mainTable > div {
+    z-index: 10;
+}
+.table {
+    width: 90%;
+    margin: 5%;
+}
 
 /* anime titre h1 */
 .animate-charcter {
@@ -381,11 +355,15 @@ form>p>a {
 }
 
 /* fin animation ciel nuageux */
-
+/*les tableaux*/
+tbody {
+    text-align: center;
+}
 
 tbody tr:nth-of-type(odd) {
     background: var(--colorBlueDarkBlue);
     color: var(--colorBlueLight);
+    height: 30px;
 }
 
 #contentTable > table > tbody > tr:nth-child(odd) > td:nth-child(4) > a,  
@@ -399,6 +377,7 @@ tbody tr:nth-of-type(odd) {
 tbody tr:nth-of-type(even) {
     background: var(--colorBlueLight);
     color: var(--colorBlueDarkBlue);
+    height: 30px;
 }
 #contentTable > table > tbody > tr:nth-child(even) > td:nth-child(4) > a,  
 #contentTable > table > tbody > tr:nth-child(even) > td:nth-child(5) > a  {
@@ -408,7 +387,7 @@ tbody tr:nth-of-type(even) {
     align-items: center;
     padding: 2%;
 }
-/* icone parametre et rajout todo et atches */
+
 .parametres {
     height: 20px;
     background-color: var(--colorBlueLight);
@@ -422,26 +401,56 @@ tbody tr:nth-of-type(even) {
     display: flex;
     align-items: center;
     flex-direction: column;
-    text-decoration: none;
+    color: var(--colorBlueDarkBlue);
 }
-.red {
-    background: red;
+
+.conteneurCreation {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 50%;
+    width: 100%;
+    color: var(--colorBlueDarkBlue);
+}
+#mainTable > div > table > tbody > tr > td:nth-child(5) > a {
+    color: var(--colorBlueLight);
+}
+#todo_lists_deadLine {
+    margin-top: 3%;
+}
+#mainTable > div > h2 {
+    margin-bottom: 2%;
+}
+#tasks > div:nth-child(2) {
+    margin-bottom: 3%;
+}
+#tasks_deadLine {
+    margin-top: 3%;
+}
+#tasks > div:nth-child(2) > label {
+    margin-right: 3%;
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-
+    .button-63 {
+        font-size: 24px;
+        min-width: 196px;
+    }
     #contentCloud {
         display: none;
     }
-    body > footer > p {
+    footer > p {
         display: none;
     }
     #infoSite {
         text-align: justify;
-        font-size: 3.5em;
+        font-size: 3em;
         width: auto;
         height: auto;
         font-weight: bold;
-        color: var(--colorBlueDarkBlue);
+        color: var(--colorBlueLight);
         background-color: rgba(185,233,252, 0.1);
         border-radius: 20px;
         margin: 0% 10% 0% 10%;
@@ -453,13 +462,14 @@ tbody tr:nth-of-type(even) {
         align-items: center;
         width: auto;
         min-width: 50%;
+        max-width: 90%;
         height: auto;
         min-height: 20%;
         justify-content: space-between;
-        background-color: rgba(185,233,252, 0.1);
         text-align: center;
         font-size: 2em;
         border-radius: 20px;
+        align-content: center;
     }
     
     input {
@@ -472,15 +482,7 @@ tbody tr:nth-of-type(even) {
         font-size: 1.5em;
     }
     #compteur {
-        text-align: justify;
         font-size: 3.5em;
-        width: auto;
-        height: auto;
-        font-weight: bold;
-        color: var(--colorBlueDarkBlue);
-        background-color: rgba(185,233,252, 0.1);
-        border-radius: 20px;
-        margin: 0% 10% 0% 10%;
     }
     main > form > div:nth-child(5) {
         display: flex;
@@ -496,18 +498,118 @@ tbody tr:nth-of-type(even) {
     #registration_form_agreeTerms {
         height: 40px;
         width: 40px;
-        margin: 0;
-        padding: 0;
-        margin-left: 3%;
     }
-    #contentTable {
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        align-items: center;  
+    #contentTable { 
         width: 100%;
         height: auto;
         min-height: 60%;
         font-size: 2em;
+    }
+    tbody tr:nth-of-type(odd) {
+        height: 60px;
+    }
+    tbody tr:nth-of-type(even) {
+        height: 60px;
+    }
+    #contentTable > table > thead > tr > th:nth-child(1),
+    #contentTable > table > thead > tr > th:nth-child(3),
+    #contentTable > table > thead > tr > th:nth-child(5) {
+        color: var(--colorBlueLight);
+    }
+    .parametres {
+        height: 45px;
+    }
+    .NewTaskAndTodoList {
+        font-size: 1.2em;
+    }
+    .TodoPlus {
+        height: 100px;
+    }
+    .conteneurCreation {
+        width: 100%;
+    }
+    .conteneurCreation > h2{
+        font-size: 8vw;
+    }
+    #mainTable > div > a {
+        font-size: 5vw;
+    }
+    #todo_lists > div:nth-child(1) > label {
+        font-size: 1.8em;
+    }
+    #todo_lists > div:nth-child(2) > label {
+        font-size: 1.8em;
+    }
+    #todo_lists_deadLine_month,
+    #todo_lists_deadLine_day,
+    #todo_lists_deadLine_year {
+        height: 40px;
+        width: 20%;
+    }
+    #contentTable > p {
+        margin-top: 2%;
+        text-align: center;
+        font-size: 1.3em;
+        color: var(--colorBlueDarkBlue);
+    }
+    #contentTable > a:nth-child(3),
+    #contentTable > a:nth-child(4) {
+        font-size: 1.5em;
+        text-decoration: none;
+    }
+    #task-status {
+        height: 40px;
+        width: 100px;
+    }
+    
+    #task-status > option:nth-child(2),
+    #task-status > option:nth-child(3),
+    #task-status > option:nth-child(4) {
+        font-size: 1em;
+        font-weight: bold;
+    }
+    body > footer > div {
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+    #todo_lists_deadLine_day {
+        margin-top: 5%;
+    }
+    #todo_lists > div:nth-child(2) {
+        margin-top: 5%;
+    }
+    #contentTable > a:nth-child(4) {
+        margin-top: 5%;
+    }
+    #tasks > div:nth-child(2),
+    #tasks > div:nth-child(3) {
+        margin-top: 5%;
+        font-size: 1.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #tasks_status {
+        margin-top: 5%;
+        width: 30%;
+        height: 40px;
+    }
+    #tasks_status > option:nth-child(1),
+    #tasks_status > option:nth-child(2),
+    #tasks_status > option:nth-child(3) {
+        height: 40px;
+        width: 140px;
+        text-align: center;
+    }
+    #tasks_deadLine_month,
+    #tasks_deadLine_day,
+    #tasks_deadLine_year {
+        height: 40px;
+        width: 140px;
+        font-size: 0.7em;
+        text-align: center;
+    }
+    footer > div > a > img {
+        height: 45px;
     }
 }

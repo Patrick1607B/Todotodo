@@ -4,95 +4,89 @@
 {% endblock %}
 
 {% block body %}
+	<div id="mainTable">
+		<div id="contentTable">
+			<h2>Liste des tâches</h2>
 
-
-<h1>Tasks index</h1>
-
-<table class="table">
-	<thead>
-		<tr>
-			{# <th>Id</th> #}
-			<th>Content</th>
-			<th>Etat</th>
-			<th>DeadLine</th>
-			<th>Expiré</th>
-			<th>actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		{# {{id}} #}
-		{% for task in tasks %}
-
-
-			<tr>
-				{# <td>{{ task.id }}</td> #}
-				<td>{{ task.content }}</td>
-
-				<td>
-					<select name="statusTask" id="task-status">
-						<option value="{{task.id}}" disabled></option>
-						{% for etat in status %}
-							{% if(task.status == etat) %}
-								<option value={{etat.id}} selected="selected">{{etat.status}}</option>
+			<table class="table">
+				<thead>
+					<tr>
+						{# <th>Id</th> #}
+						<th>Content</th>
+						<th>Etat</th>
+						<th>Date de Fin</th>
+						<th>Expiré</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+						{# {{id}} #}
+					{% for task in tasks %}
+						<tr>
+							{# <td>{{ task.id }}</td> #}
+							<td>{{ task.content }}</td>
+							<td>
+								<select name="statusTask" id="task-status">
+										<option value="{{task.id}}" disabled></option>
+									{% for etat in status %}
+										{% if(task.status == etat) %}
+											<option value={{etat.id}} selected="selected">{{etat.status}}</option>
+										{% else %}
+											<option value={{etat.id}}>{{etat.status}}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</td>
+							<td>{{ task.deadLine ? task.deadLine|date('d-m-Y') : '' }}</td>
+							<td>
+									{% if date(task.deadLine) < date() %}
+										oui
+									{% else %}
+										non
+									{% endif %}
+							</td>
+							<td>
+								<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
+							</td>
+								{# <td>{{ task.etat }}</td> #}
+								{# <td><a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a></td> #}
+						</tr>	
 							{% else %}
-								<option value={{etat.id}}>{{etat.status}}</option>
-							{% endif %}
-						{% endfor %}
-					</select>
-				</td>
-				<td>{{ task.deadLine ? task.deadLine|date('d-m-Y') : '' }}</td>
-				<td>
-					{% if date(task.deadLine) < date() %}
-						oui
-					{% else %}
-						non
-					{% endif %}
+						<tr>
+							<td colspan="5">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<a href="{{ path('app_tasks_new', {'id': id}) }}">Crée une tâche</a>
+			<a href="{{ path('app_todo_lists_index') }}">Retour liste</a>
 
 
-				</td>
-				<td>
-					<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
-				</td>
-				{# <td>{{ task.etat }}</td> #}
-				{# <td><a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a></td> #}
-			</tr>
-		</td>
-	{% else %}
-		<tr>
-			<td colspan="5">no records found</td>
-		</tr>
-	{% endfor %}
-	</tbody>
-</table>
+			<p>
+			{# {% for task in tasks %} #}
+				{# {% if date(task.deadLine) < date() and task.status.status != 'c' %} #}
+					{# {{task.content}} #}
+					{{message}}
+				{# {% else %} #}
+				{# {% endif %} #}
+			{# {% endfor %} #}
+			</p>
 
-<a href="{{ path('app_tasks_new', {'id': id}) }}">Create new</a>
-<a href="{{ path('app_todo_lists_index') }}">Todolist</a>
+		</div>
+	</div>
+		<script>
+			const selects = document.querySelectorAll('#task-status');
+			console.log('selects');
 
+			selects.forEach((item) => {
+			console.log(item);
+			item.addEventListener('change', (e) => {	
+				const taskId = e.target[0].value;
+				const etatId = e.target.value;
 
-<p>
-{# {% for task in tasks %} #}
-	{# {% if date(task.deadLine) < date() and task.status.status != 'c' %} #}
-		{# {{task.content}} #}
-		{{message}}
-	{# {% else %} #}
-	{# {% endif %} #}
-{# {% endfor %} #}
-</p>
-
-
-
-<script>
-	const selects = document.querySelectorAll('#task-status');
-console.log('selects');
-
-	selects.forEach((item) => {
-		console.log(item);
-		item.addEventListener('change', (e) => {	
-			const taskId = e.target[0].value;
-			const etatId = e.target.value;
-
-			window.location.href = `/tasks/statusTask/${taskId}/${etatId}/`;
-		})
-	})
-</script>
+				window.location.href = `/tasks/statusTask/${taskId}/${etatId}/`;
+			})
+			})
+		</script>
 {% endblock %}

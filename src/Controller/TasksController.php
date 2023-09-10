@@ -32,7 +32,8 @@ class TasksController extends AbstractController
     }
 
     #[Route('/new/{id}', name: 'app_tasks_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, $id, TodoListsRepository $todoListsRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, $id,
+    TodoListsRepository  $todoListsRepository): Response
     {
         $todoLists = $todoListsRepository->findBy(['id' => $id])[0];
 

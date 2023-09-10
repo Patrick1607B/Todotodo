@@ -27,16 +27,19 @@
 				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" 						autocomplete="email" placeholder="Ton Email" required autofocus>
 		{# -------------------------------------------- #}
 				<label for="inputPassword"></label>
-				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-					password" placeholder="Ton mot de passe !" required>
+				<input type="password" name="password" id="inputPassword" class="form-control" 										autocomplete="current-password" placeholder="Ton mot de passe !" required>
 		{# --------------------------------------------------- #}
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 				<button class="btn btn-lg btn-primary" type="submit">Connecte toi</button>
 				<p>
 				<a href="{{ path('app_register') }}">Sinon enregistre toi ici !</a>
 				</p>
+				<p>
+				<a href="{{ path('app_forgot_password_request') }}">Si tu as oublié ton mot de passe clique ici !</a>
+				</p>
 	</form>
 			<div id="compteur">
-				<p>Actuellement {{ cptUser }} utilisateurs ont un compte, ils ont créé {{ cptTodo }} listes et {{ cptTask }} 				tâches.</p>
+				<p>Actuellement {{ cptUser }} utilisateurs ont un compte, ils ont créé {{ cptTodo }} listes et {{ 					cptTask }} tâches.</p>
 			</div>
 			</main>
 {% endblock %}

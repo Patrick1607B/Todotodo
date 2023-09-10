@@ -4,9 +4,13 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Create new Tasks</h1>
+	<div id="mainTable">
+		<div class="conteneurCreation">
+	<h2>Create new Tasks</h2>
 
 	{{ include('tasks/_form.html.twig') }}
 
 	<a href="{{ path('app_tasks_index',{'id': id}) }}">back to list</a>
+	</div>
+	</div>
 {% endblock %}
