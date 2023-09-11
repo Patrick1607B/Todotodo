@@ -41,7 +41,7 @@
 				<div class="mb-3">
 					Tu es connecté en tant que
 					{{ app.user.userIdentifier }}, si tu veux sortir c'est ici
-					<a href="{{ path('app_logout') }}"><img src="{{ asset('asset/img/porte-de-sortie.png') }}" 									alt="déconnexion"></a>
+					<a class="picturePorteFooter" href="{{ path('app_logout') }}"><img src="{{ asset('asset/img/porte-de-sortie.png') }}" 									alt="déconnexion"></a>
 				</div>
 			{% endif %}
 			{% block Lien %}

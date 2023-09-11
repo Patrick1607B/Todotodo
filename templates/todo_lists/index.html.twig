@@ -23,11 +23,11 @@
 				{# Début boucle for qui contrôl boucle sur Todo #}
 				{% for todo_list in todo_lists %}
 					{# Début if qui contrôl les dates limites #}
-						{% if date(todo_list.deadLine) < date()%}
+						{# {% if date(todo_list.deadLine) < date()%}
 							{# <tr class="red"> #}
-						{% else %}
+						{# {% else %} #}
 							<tr>
-						{% endif %}
+						{# {% endif %} #} 
 					{# <td>{{ todo_list.id }}</td> #}
 					<td>{{ todo_list.nameList }}</td>
 					<td>{{ todo_list.deadLine ? todo_list.deadLine|date('d-m-Y') : '' }}</td>

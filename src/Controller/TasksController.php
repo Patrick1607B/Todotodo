@@ -4,14 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Tasks;
 use App\Form\TasksType;
-use App\Repository\StatusRepository;
 use App\Repository\TasksRepository;
+use App\Repository\StatusRepository;
 use App\Repository\TodoListsRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/tasks')]
 class TasksController extends AbstractController
@@ -19,15 +21,35 @@ class TasksController extends AbstractController
     #[Route('/{id}', name: 'app_tasks_index', methods: ['GET'])]
     public function index(TasksRepository $tasksRepository, StatusRepository $statusRepository, $id): Response
     {
-        $messageTaskNotEnd = ["Rien ne sert de courir car cela fatigue", "Ne fait jamais le jour même ce que tu porrais faire le lendemain"];
+        $messageTaskNotEnd = ["Rien ne sert de courir car cela fatigue ! 😉", "Ne fais  jamais le jour même ce que tu pourrais faire le lendemain ! 😅","Le secret pour avancer est de commencer, pas forcément de finir ! 😁", "Il n'y a rien de mieux que des tâches à moitié terminées.😇"];
+        $messageTaskEnd = ["Je te félicite, tu n'as aucune tâche en cours ! 🥳", "C'est bien, tu n'as rien qui ne soit pas terminé ! 😉","Le secret pour avancer est de commencer et de finir ! 👌"];
+        // $cptStatusTasks = count($statusRepository->findAll());
         $messageTaskNotEndRandom = rand(0,count($messageTaskNotEnd)-1);
-
+        $messageTaskEndRandom = rand(0,count($messageTaskEnd)-1);
+        
         $tasks = $tasksRepository->findBy(['tasksTodolists' => $id]);
+
+        $isTaskFinished = false;
+
+        $dateToday = new \DateTime();
+        // dd($dateToday);
+
+
+
+        foreach ($tasks as $key => $task) {
+             if ($task->getDeadLine() < $dateToday && $task->getStatus()->getStatus() != 'Fait' ) {
+                    $isTaskFinished = true;
+             }
+        }        
+
         return $this->render('tasks/index.html.twig', [
             'tasks' => $tasks,
             'status' => $statusRepository->findAll(),
             'id' => $id,
-            'message' => $messageTaskNotEnd[$messageTaskNotEndRandom]
+            'message' => $messageTaskNotEnd[$messageTaskNotEndRandom],
+            'messageEnd' => $messageTaskEnd[$messageTaskEndRandom], 
+            'isTaskFinished' => $isTaskFinished  
+            // 'status' => $cptStatusTasks[$cptStatusTasks]    
         ]);
     }
 

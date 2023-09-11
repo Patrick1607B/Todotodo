@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/todo/lists')]
 class TodoListsController extends AbstractController
-{
+{   
     #[Route('/', name: 'app_todo_lists_index', methods: ['GET'])]
     public function index(TodoListsRepository $todoListsRepository): Response
     {

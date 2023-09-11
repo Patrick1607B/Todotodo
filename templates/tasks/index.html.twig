@@ -12,7 +12,7 @@
 				<thead>
 					<tr>
 						{# <th>Id</th> #}
-						<th>Content</th>
+						<th>Tâches ?</th>
 						<th>Etat</th>
 						<th>Date de Fin</th>
 						<th>Expiré</th>
@@ -46,7 +46,7 @@
 									{% endif %}
 							</td>
 							<td>
-								<a href="{{ path('app_tasks_edit', {'id': task.id}) }}">edit</a>
+								<a href="{{ path('app_tasks_edit', {'id': task.id}) }}"><img class="parametres" 								src="{{ asset('asset/img/croix.png') }}"alt="parametres"></a>
 							</td>
 								{# <td>{{ task.etat }}</td> #}
 								{# <td><a href="{{ path('app_tasks_show', {'id': task.id}) }}">show</a></td> #}
@@ -59,18 +59,16 @@
 				</tbody>
 			</table>
 
-			<a href="{{ path('app_tasks_new', {'id': id}) }}">Crée une tâche</a>
+			<a href="{{ path('app_tasks_new', {'id': id}) }}">Créer une tâche</a>
 			<a href="{{ path('app_todo_lists_index') }}">Retour liste</a>
 
-
 			<p>
-			{# {% for task in tasks %} #}
-				{# {% if date(task.deadLine) < date() and task.status.status != 'c' %} #}
-					{# {{task.content}} #}
-					{{message}}
-				{# {% else %} #}
-				{# {% endif %} #}
-			{# {% endfor %} #}
+				{% if isTaskFinished == true %}
+				{{ message }}
+				{% else %}
+				{{ messageEnd }}
+				{% endif %}
+				
 			</p>
 
 		</div>
